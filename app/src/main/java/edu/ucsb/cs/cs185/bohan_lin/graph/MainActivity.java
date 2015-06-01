@@ -7,6 +7,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -16,9 +21,47 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
     }
 
+    private InputStream is;
+    private BufferedReader reader;
+    private String line;
+
+    private int[] xValues;
+    private String[] yValues;
+    private int[][] zValues;
+    private int zIndex = 0;
+
+    private int rowIndex = 0;
+
+    private String[] row;
+
     public void graphActivity(View view) {
         Intent graph = new Intent(this, Graph.class);
-        //graph.putExtra(DATASET);
+        if(view.getId() == R.id.data1){
+            try {
+                is = getAssets().open("dataset1.csv");
+                reader = new BufferedReader(new InputStreamReader(is));
+                line = reader.readLine();
+                yValues = line.split(","); //first row contains the y axis value
+                while((line = reader.readLine()) != null) { //rest of the rows
+                    row = line.split(","); //split the row
+
+                    //Toast.makeText(this, row[0], Toast.LENGTH_LONG).show();
+                    //xValues[rowIndex] = Integer.parseInt(row[0]); //first cell in each row is x axis value
+
+                    for(int i = 1; i < row.length; i++) { //every following cell
+                        //zValues[rowIndex][zIndex] = Integer.parseInt(row[i]); //z value
+                        zIndex++;
+                    }
+
+                    rowIndex++;
+                    zIndex = 0;
+                }
+            } catch(IOException ex) {
+            }
+        }
+        graph.putExtra("xValues", xValues);
+        graph.putExtra("yValues", yValues);
+        graph.putExtra("zValues", zValues);
         startActivity(graph);
     }
 
