@@ -5,8 +5,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 
 public class Graph extends ActionBarActivity {
+
+    public ArrayList<String> csvCategoryNames;
+    public ArrayList<inputCSVdata> csvDataRows;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
