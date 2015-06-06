@@ -7,12 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.opencsv.CSVReader;
-
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-
 
 public class MainActivity extends ActionBarActivity {
 
@@ -28,57 +22,6 @@ public class MainActivity extends ActionBarActivity {
         Intent graph = new Intent(this, Graph.class);
         if (view.getId() == R.id.data1) {
             System.out.println("-----------------starting the parsing -----------------");
-
-
-            ArrayList<String> csvCategoryNames = new ArrayList<>();                       // arraylist to store the name of the csv stuff
-            ArrayList<inputCSVdata> csvDataRows = new ArrayList<>();                //creating an arraylist of inputCSV Data Class
-
-            try {
-                InputStreamReader csvStreamReader = new InputStreamReader(getAssets().open("cars.csv"));
-                CSVReader reader = new CSVReader(csvStreamReader);
-
-                String[] firstLine;
-                firstLine = reader.readNext();
-                for (int i = 0; i < firstLine.length; i++) {
-                    csvCategoryNames.add(firstLine[i]); /// adding the row names to the category names
-                }
-                System.out.println("Header names: " + firstLine[0] + "   " + firstLine[1] + "  " + firstLine[2] + "   " + firstLine[3] + " " + firstLine[4]);
-
-                //**
-                String[] nextLine;
-                while ((nextLine = reader.readNext()) != null) {
-
-                    inputCSVdata tempRowdata = new inputCSVdata();
-
-                    tempRowdata.name = nextLine[0];
-
-                    try {
-
-                        for (int i = 0; i < nextLine.length - 1; i++) {
-                            tempRowdata.dataFloats[i] = Float.parseFloat(nextLine[i + 1]);
-                            System.out.println(tempRowdata.dataFloats[i]);
-                        }
-
-
-                    } catch (NumberFormatException ex) {
-                        System.out.println("found a 0 lol ");
-                        for (int i = 0; i < nextLine.length - 1; i++)
-                            tempRowdata.dataFloats[i] = 0.0f;
-
-                    }
-
-                    csvDataRows.add(tempRowdata);
-                }
-                //*/
-
-
-                System.out.println("size of arraylist is: " + csvDataRows.size());
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
             startActivity(graph);
         }
     }
