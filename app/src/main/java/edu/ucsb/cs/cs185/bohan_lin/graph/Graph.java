@@ -1,17 +1,12 @@
 package edu.ucsb.cs.cs185.bohan_lin.graph;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
-
 
 public class Graph extends ActionBarActivity {
-
-    public ArrayList<String> csvCategoryNames;
-    public ArrayList<inputCSVdata> csvDataRows;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
