@@ -14,14 +14,22 @@ import java.util.ArrayList;
 
 public class Graph extends ActionBarActivity {
 
-    ArrayList<String> csvCategoryNames = new ArrayList<>();                       // arraylist to store the name of the csv stuff
-    ArrayList<inputCSVdata> csvDataRows = new ArrayList<>();                //creating an arraylist of inputCSV Data Class
-    public float min1, max1, min2, max2, min3, max3, min4, max4, min5, max5;
+    public ArrayList<String> csvCategoryNames = new ArrayList<String>();                       // arraylist to store the name of the csv stuff
+    public ArrayList<inputCSVdata> csvDataRows = new ArrayList<inputCSVdata>();                //creating an arraylist of inputCSV Data Class
+
+    float [] minimumCategories= new float[8];           // should be 7 actually
+    float [] maximumCategories = new float[8];
+    int numberOfColumns ;
+    int numberOfRows = 0 ;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         parseCSV();
         setMinMax();
+
+        drawDataLines();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
     }
@@ -34,6 +42,8 @@ public class Graph extends ActionBarActivity {
 
             String[] firstLine;
             firstLine = reader.readNext();
+            numberOfColumns = firstLine.length -1 ;
+
             for (int i = 0; i < firstLine.length; i++) {
                 csvCategoryNames.add(firstLine[i]); /// adding the row names to the category names
             }
@@ -45,28 +55,36 @@ public class Graph extends ActionBarActivity {
 
                 inputCSVdata tempRowdata = new inputCSVdata();
 
-                tempRowdata.name = nextLine[0];
 
-                try {
 
+                try
+                {
+                    tempRowdata.name = nextLine[0];
                     for (int i = 0; i < nextLine.length - 1; i++) {
                         tempRowdata.dataFloats[i] = Float.parseFloat(nextLine[i + 1]);
                         System.out.println(tempRowdata.dataFloats[i]);
                     }
 
+                    csvDataRows.add(tempRowdata);
 
-                } catch (NumberFormatException ex) {
+
+                }
+                catch (NumberFormatException ex)
+                {
                     System.out.println("found a 0 lol ");
+                    tempRowdata.name = "0";
                     for (int i = 0; i < nextLine.length - 1; i++)
                         tempRowdata.dataFloats[i] = 0.0f;
+                    //setting them to 0 but don't add them anywhere
 
                 }
 
-                csvDataRows.add(tempRowdata);
+                //csvDataRows.add(tempRowdata);
+                // stop adding the 0s to the list as thiswill screw up the min and max
             }
 
             System.out.println("size of arraylist is: " + csvDataRows.size());
-
+            numberOfRows = csvDataRows.size();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -76,6 +94,57 @@ public class Graph extends ActionBarActivity {
 
     public void setMinMax() {
         //write the setting stuff here
+        // setting all to the first row
+        for( int  i = 0 ; i < numberOfColumns ; i++ )
+        {
+            minimumCategories[i] =  csvDataRows.get(0).dataFloats[i];
+            maximumCategories[i] =  csvDataRows.get(0).dataFloats[i];
+        }
+
+
+        // calculating min and max
+
+        for (int  i = 0 ; i < numberOfColumns ; i++ )
+        {
+            for ( int  j = 0 ; j < numberOfRows ; j++ )
+            {
+                if (  minimumCategories[i] > csvDataRows.get(j).dataFloats[i] )
+                {
+                    minimumCategories[i] = csvDataRows.get(j).dataFloats[i];
+                }
+
+                if (  maximumCategories[i] < csvDataRows.get(j).dataFloats[i] )
+                {
+                    maximumCategories[i] = csvDataRows.get(j).dataFloats[i];
+                }
+
+
+            }
+        }
+
+
+        //printing out minimum and maximum
+
+        System.out.println("Minimum categories");
+        for( int  i = 0 ; i < numberOfColumns ; i++ )
+        {
+            System.out.print( "  " + minimumCategories[i]);
+        }
+        System.out.println();
+        System.out.println("Maximum categories");
+        for( int  i = 0 ; i < numberOfColumns ; i++ )
+        {
+            System.out.print( "  " + maximumCategories[i]);
+        }
+
+        System.out.println();
+        System.out.println("end of setminmax");
+
+    }
+
+    public void drawDataLines()
+    {
+        System.out.println("Drawline data lines");
     }
 
     @Override
