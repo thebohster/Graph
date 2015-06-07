@@ -1,9 +1,23 @@
 package edu.ucsb.cs.cs185.bohan_lin.graph;
+// https://github.com/yahoo/android-range-seek-bar/blob/master/rangeseekbar-sample/src/main/java/com/yahoo/mobile/client/android/demo/DemoActivity.java
 
+import android.app.ActionBar;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Range;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.opencsv.CSVReader;
 
@@ -30,8 +44,101 @@ public class Graph extends ActionBarActivity {
         setMinMax();
 
         drawDataLines();
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graph);
+
+
+        /**
+         *
+         * setup range seek bars using java
+         *
+         */
+
+        WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int screenWidth = size.x;
+        int screenHeight = size.y;
+
+
+        // Add to layout
+        LinearLayout layout = new LinearLayout(this);
+
+        RangeSeekBar<Float> rangeSeekBar0 = new RangeSeekBar<Float>(this);
+        rangeSeekBar0.setRangeValues(minimumCategories[0], maximumCategories[0]);
+        rangeSeekBar0.setSelectedMinValue(minimumCategories[0]);
+        rangeSeekBar0.setSelectedMaxValue(maximumCategories[0]);
+        rangeSeekBar0.setId(1);
+
+
+        RangeSeekBar<Float> rangeSeekBar1 = new RangeSeekBar<Float>(this);
+        rangeSeekBar1.setRangeValues(minimumCategories[1], maximumCategories[1]);
+        rangeSeekBar1.setSelectedMinValue(minimumCategories[1]);
+        rangeSeekBar1.setSelectedMaxValue(maximumCategories[1]);
+        rangeSeekBar1.setId(2);
+
+
+        RangeSeekBar<Float> rangeSeekBar2 = new RangeSeekBar<Float>(this);
+        rangeSeekBar1.setRangeValues(minimumCategories[2], maximumCategories[2]);
+        rangeSeekBar1.setSelectedMinValue(minimumCategories[2]);
+        rangeSeekBar1.setSelectedMaxValue(maximumCategories[2]);
+        rangeSeekBar1.setId(3);
+
+        RangeSeekBar<Float> rangeSeekBar3 = new RangeSeekBar<Float>(this);
+        rangeSeekBar1.setRangeValues(minimumCategories[3], maximumCategories[3]);
+        rangeSeekBar1.setSelectedMinValue(minimumCategories[3]);
+        rangeSeekBar1.setSelectedMaxValue(maximumCategories[3]);
+        rangeSeekBar1.setId(4);
+
+
+        RangeSeekBar<Float> rangeSeekBar4 = new RangeSeekBar<Float>(this);
+        rangeSeekBar1.setRangeValues(minimumCategories[4], maximumCategories[4]);
+        rangeSeekBar1.setSelectedMinValue(minimumCategories[4]);
+        rangeSeekBar1.setSelectedMaxValue(maximumCategories[4]);
+        rangeSeekBar1.setId(5);
+
+
+
+        //set layout details
+        layout.setBackgroundColor(Color.parseColor("#ff0000"));
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+
+        LinearLayout.LayoutParams seekBarParams =
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT , 1  );
+
+
+        seekBarParams.setMargins(24,48,24,48);
+
+        rangeSeekBar0.setLayoutParams( seekBarParams );
+        rangeSeekBar1.setLayoutParams( seekBarParams );
+        rangeSeekBar2.setLayoutParams( seekBarParams );
+        rangeSeekBar3.setLayoutParams( seekBarParams );
+        rangeSeekBar4.setLayoutParams( seekBarParams );
+
+
+        layout.addView(rangeSeekBar0);
+        layout.addView(rangeSeekBar1);
+        layout.addView(rangeSeekBar2);
+        layout.addView(rangeSeekBar3);
+        layout.addView(rangeSeekBar4);
+
+        setContentView(layout);
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     public void parseCSV() {
@@ -140,6 +247,7 @@ public class Graph extends ActionBarActivity {
         System.out.println();
         System.out.println("end of setminmax");
 
+
     }
 
 
@@ -147,7 +255,35 @@ public class Graph extends ActionBarActivity {
 
     public void drawDataLines()
     {
+
         System.out.println("Drawline data lines");
+
+
+        /*
+        // one loop to figure out the points
+        //draw the lines
+        for ( int i = 0 ; i < numberOfRows ; i++ )
+        {
+            ArrayList<Point> linePoint = new ArrayList<Point>();
+
+            for ( int j = 0 ; j < numberOfColumns ; j ++ )
+            {
+                // i constant change j and height
+                Point tempPoint;
+                int x;
+                int y;
+
+               // x =  inputEcon * ( maxRange - minrange ) / (maxEcon - minEcon);
+
+                //RangeSeekBar name = (RangeSeekBar) findViewById(R.id.value1);
+
+            }
+        }
+        */
+
+
+
+
     }
 
     @Override
