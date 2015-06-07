@@ -125,7 +125,7 @@ public class Graph extends ActionBarActivity {
         layout.addView(rangeSeekBar2);
         layout.addView(rangeSeekBar3);
         layout.addView(rangeSeekBar4);
-        layout.addView(rangeSeekBar4);
+        //layout.addView(rangeSeekBar4);
 
         setContentView(layout);
 
