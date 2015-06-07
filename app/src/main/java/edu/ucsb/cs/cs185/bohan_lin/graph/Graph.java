@@ -80,23 +80,23 @@ public class Graph extends ActionBarActivity {
 
 
         RangeSeekBar<Float> rangeSeekBar2 = new RangeSeekBar<Float>(this);
-        rangeSeekBar1.setRangeValues(minimumCategories[2], maximumCategories[2]);
-        rangeSeekBar1.setSelectedMinValue(minimumCategories[2]);
-        rangeSeekBar1.setSelectedMaxValue(maximumCategories[2]);
-        rangeSeekBar1.setId(3);
+        rangeSeekBar2.setRangeValues(minimumCategories[2], maximumCategories[2]);
+        rangeSeekBar2.setSelectedMinValue(minimumCategories[2]);
+        rangeSeekBar2.setSelectedMaxValue(maximumCategories[2]);
+        rangeSeekBar2.setId(3);
 
         RangeSeekBar<Float> rangeSeekBar3 = new RangeSeekBar<Float>(this);
-        rangeSeekBar1.setRangeValues(minimumCategories[3], maximumCategories[3]);
-        rangeSeekBar1.setSelectedMinValue(minimumCategories[3]);
-        rangeSeekBar1.setSelectedMaxValue(maximumCategories[3]);
-        rangeSeekBar1.setId(4);
+        rangeSeekBar3.setRangeValues(minimumCategories[3], maximumCategories[3]);
+        rangeSeekBar3.setSelectedMinValue(minimumCategories[3]);
+        rangeSeekBar3.setSelectedMaxValue(maximumCategories[3]);
+        rangeSeekBar3.setId(4);
 
 
         RangeSeekBar<Float> rangeSeekBar4 = new RangeSeekBar<Float>(this);
-        rangeSeekBar1.setRangeValues(minimumCategories[4], maximumCategories[4]);
-        rangeSeekBar1.setSelectedMinValue(minimumCategories[4]);
-        rangeSeekBar1.setSelectedMaxValue(maximumCategories[4]);
-        rangeSeekBar1.setId(5);
+        rangeSeekBar4.setRangeValues(minimumCategories[4], maximumCategories[4]);
+        rangeSeekBar4.setSelectedMinValue(minimumCategories[4]);
+        rangeSeekBar4.setSelectedMaxValue(maximumCategories[4]);
+        rangeSeekBar4.setId(5);
 
 
 
@@ -124,6 +124,7 @@ public class Graph extends ActionBarActivity {
         layout.addView(rangeSeekBar1);
         layout.addView(rangeSeekBar2);
         layout.addView(rangeSeekBar3);
+        layout.addView(rangeSeekBar4);
         layout.addView(rangeSeekBar4);
 
         setContentView(layout);
@@ -224,7 +225,6 @@ public class Graph extends ActionBarActivity {
                 {
                     maximumCategories[i] = csvDataRows.get(j).dataFloats[i];
                 }
-
 
             }
         }
