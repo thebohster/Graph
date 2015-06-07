@@ -28,7 +28,6 @@ import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
@@ -136,6 +135,11 @@ public class RangeSeekBar<T extends Number> extends ImageView {
         } else {
             return (T) Integer.valueOf(a.getInteger(attribute, defaultValue));
         }
+    }
+
+    public void setAbsoluteMinMax(T min, T max) {
+        this.absoluteMinValue = min;
+        this.absoluteMaxValue = max;
     }
 
     private void init(Context context, AttributeSet attrs) {
@@ -519,7 +523,6 @@ public class RangeSeekBar<T extends Number> extends ImageView {
 
             canvas.save();
             canvas.rotate(90);
-            Log.w(Float.toString(mDistanceToTop + mTextSize), Float.toString(mDistanceToTop + mTextSize));
             if (!mSingleThumb) {
                 canvas.drawText(minText,
                                 mDistanceToTop + mTextSize,
