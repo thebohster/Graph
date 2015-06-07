@@ -229,7 +229,6 @@ public class Graph extends ActionBarActivity {
             }
         }
 
-
         //printing out minimum and maximum
 
         System.out.println("Minimum categories");
@@ -243,9 +242,9 @@ public class Graph extends ActionBarActivity {
         {
             System.out.print( "  " + maximumCategories[i]);
         }
-
         System.out.println();
         System.out.println("end of setminmax");
+
 
 
     }
@@ -259,7 +258,7 @@ public class Graph extends ActionBarActivity {
         System.out.println("Drawline data lines");
 
 
-        /*
+
         // one loop to figure out the points
         //draw the lines
         for ( int i = 0 ; i < numberOfRows ; i++ )
@@ -279,7 +278,7 @@ public class Graph extends ActionBarActivity {
 
             }
         }
-        */
+
 
 
 
