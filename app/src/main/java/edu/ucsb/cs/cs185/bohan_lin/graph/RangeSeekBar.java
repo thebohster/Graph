@@ -461,7 +461,7 @@ public class RangeSeekBar<T extends Number> extends ImageView {
 
         paint.setTextSize(mTextSize);
         paint.setStyle(Style.FILL);
-        paint.setColor(Color.GRAY);
+        paint.setColor(Color.WHITE);
         paint.setAntiAlias(true);
 
         // draw min and max labels

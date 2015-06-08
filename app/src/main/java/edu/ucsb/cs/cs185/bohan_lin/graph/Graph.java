@@ -35,8 +35,8 @@ public class Graph extends ActionBarActivity {
     float [] maximumCategories = new float[8];
     int numberOfColumns ;
     int numberOfRows = 0 ;
-
-
+    int screenWidth;
+    int screenHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +58,8 @@ public class Graph extends ActionBarActivity {
         Display display = wm.getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        int screenWidth = size.x;
-        int screenHeight = size.y;
+        screenWidth = size.x;
+        screenHeight = size.y;
 
 
         // Add to layout
@@ -113,7 +113,7 @@ public class Graph extends ActionBarActivity {
 
         seekBarParams.setMargins(24,48,24,48);
 
-        rangeSeekBar0.setLayoutParams( seekBarParams );
+        rangeSeekBar0.setLayoutParams(seekBarParams);
         rangeSeekBar1.setLayoutParams( seekBarParams );
         rangeSeekBar2.setLayoutParams( seekBarParams );
         rangeSeekBar3.setLayoutParams( seekBarParams );
@@ -212,7 +212,7 @@ public class Graph extends ActionBarActivity {
 
         // calculating min and max
 
-        for (int  i = 0 ; i < numberOfColumns ; i++ )
+        for (int  i = 0 ; i < numberOfColumns-2 ; i++ )
         {
             for ( int  j = 0 ; j < numberOfRows ; j++ )
             {
@@ -249,9 +249,6 @@ public class Graph extends ActionBarActivity {
 
     }
 
-
-
-
     public void drawDataLines()
     {
 
@@ -264,19 +261,35 @@ public class Graph extends ActionBarActivity {
         for ( int i = 0 ; i < numberOfRows ; i++ )
         {
             ArrayList<Point> linePoint = new ArrayList<Point>();
-
-            for ( int j = 0 ; j < numberOfColumns ; j ++ )
+            linePoint.clear();
+            for ( int j = 0 ; j < numberOfColumns-3 ; j ++ )
             {
                 // i constant change j and height
-                Point tempPoint;
-                int x;
-                int y;
+                Point tempPoint = new Point();
 
-               // x =  inputEcon * ( maxRange - minrange ) / (maxEcon - minEcon);
+               //x =  inputEcon * ( maxRange - minrange ) / (maxEcon - minEcon);
+                //mapping function for x
+                float x = csvDataRows.get(i).dataFloats[j] * (screenWidth  - 0 ) / (maximumCategories[j] - minimumCategories[j]);
+                //mapping function for y
 
-                //RangeSeekBar name = (RangeSeekBar) findViewById(R.id.value1);
+                //some padding + i * distancebetween
+                float y =  i * screenHeight/5 ;
+
+                tempPoint.set((int)x,(int)y);
+
+
+               //RangeSeekBar name = (RangeSeekBar) findViewById(R.id.value1);
+
+                linePoint.add(tempPoint);
 
             }
+
+
+            // some call to draw the lines
+
+
+
+
         }
 
 
