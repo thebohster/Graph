@@ -68,7 +68,8 @@ public class Graph extends ActionBarActivity {
         RelativeLayout layout = new RelativeLayout(this);
         setContentView(layout);
 
-        DrawLines linesView = new DrawLines(this);
+        final DrawLines linesView = new DrawLines(this);
+
         linesView.setData(csvCategoryNames, csvDataRows, minimumCategories, maximumCategories, numberOfColumns, numberOfRows, screenWidth, screenHeight);
         drawDataLines();
 
@@ -132,7 +133,7 @@ public class Graph extends ActionBarActivity {
 
         RelativeLayout.LayoutParams seekBarParams4 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         seekBarParams4.addRule( RelativeLayout.BELOW, rangeSeekBar3.getId() );
-        seekBarParams4.setMargins(sideWidth,topWidth, sideWidth,topWidth);
+        seekBarParams4.setMargins(sideWidth, topWidth, sideWidth, topWidth);
 
         rangeSeekBar0.setLayoutParams(seekBarParams0);
         rangeSeekBar1.setLayoutParams(seekBarParams1);
@@ -152,6 +153,23 @@ public class Graph extends ActionBarActivity {
         rangeSeekBar2.bringToFront();
         rangeSeekBar3.bringToFront();
         rangeSeekBar4.bringToFront();
+
+
+        rangeSeekBar0.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Float>() {
+                @Override
+                public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Float minValue, Float maxValue) {
+
+                    int i = 0 ;
+                    float x =    minValue;
+
+                    float  y =    maxValue;
+
+                    linesView.updateSelectedRange(i,x,y);
+                    linesView.invalidate();
+
+                }
+            });
+
 
 
     }

@@ -15,7 +15,7 @@ import java.util.jar.Attributes;
 /**
  * Created by Bohan on 6/7/2015.
  */
-public class DrawLines extends View {
+final public class DrawLines extends View {
 
     private ArrayList<String> csvCategoryNames;                       // arraylist to store the name of the csv stuff
     private ArrayList<inputCSVdata> csvDataRows;                //creating an arraylist of inputCSV Data Class
@@ -67,6 +67,15 @@ public class DrawLines extends View {
 
     }
 
+    public void updateSelectedRange( int i , float x , float y )
+    {
+        updatedMinimumCategories[i] = x;
+        updatedMaximumCategories[i] = y;
+
+
+
+    }
+
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -76,10 +85,15 @@ public class DrawLines extends View {
        for ( int  i = 0 ; i < numberOfRows ; i ++ )
        {
 
-        // check if line is within limits to pick the color of the line, use updated Min categories here
-
-
         boolean itsIn = true;
+
+        // check if line is within limits to pick the color of the line, use updated Min categories here
+        if (  csvDataRows.get(i).dataFloats[0] > updatedMinimumCategories[0] && csvDataRows.get(i).dataFloats[0] < updatedMaximumCategories[0]  )
+            itsIn = true;
+        else
+            itsIn = false;
+
+
         if ( itsIn)
             paint.setColor(Color.WHITE);
         else
