@@ -78,7 +78,7 @@ public class RangeSeekBar<T extends Number> extends ImageView {
     private boolean notifyWhileDragging = false;
     private OnRangeSeekBarChangeListener<T> listener;
 
-    String minLabel = "";
+    String minLabel = "temp";
     String maxLabel;
 
     /**
@@ -479,7 +479,9 @@ public class RangeSeekBar<T extends Number> extends ImageView {
         //String maxLabel = getContext().getString(R.string.demo_max_label);
         //if(maxLabel == null)
             //maxLabel = "hold";
-        float minMaxLabelSize = Math.max(paint.measureText(minLabel), paint.measureText(maxLabel));
+        String tempMinLabel = getContext().getString(R.string.demo_min_label);
+        String tempMaxLabel = getContext().getString(R.string.demo_max_label);
+        float minMaxLabelSize = Math.max(paint.measureText(tempMinLabel), paint.measureText(tempMaxLabel));
         float minMaxHeight = mTextOffset + thumbHalfHeight + mTextSize / 3;
 
         canvas.save();
