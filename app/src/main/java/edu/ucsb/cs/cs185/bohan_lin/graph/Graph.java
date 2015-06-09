@@ -18,6 +18,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 
 import com.opencsv.CSVReader;
 
@@ -43,10 +44,6 @@ public class Graph extends ActionBarActivity {
         parseCSV();
         setMinMax();
 
-        DrawLines linesView = new DrawLines(this);
-
-        linesView.setData(csvCategoryNames, csvDataRows, minimumCategories, maximumCategories, numberOfColumns, numberOfRows, screenWidth, screenHeight);
-        drawDataLines();
 
         super.onCreate(savedInstanceState);
 
@@ -56,7 +53,6 @@ public class Graph extends ActionBarActivity {
          * setup range seek bars using java
          *
          */
-
         WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
         Point size = new Point();
@@ -67,6 +63,12 @@ public class Graph extends ActionBarActivity {
 
         // Add to layout
         LinearLayout layout = new LinearLayout(this);
+        setContentView(layout);
+
+        DrawLines linesView = new DrawLines(this);
+        linesView.setData(csvCategoryNames, csvDataRows, minimumCategories, maximumCategories, numberOfColumns, numberOfRows, screenWidth, screenHeight);
+        drawDataLines();
+
 
         RangeSeekBar<Float> rangeSeekBar0 = new RangeSeekBar<Float>(this);
         rangeSeekBar0.setRangeValues(minimumCategories[0], maximumCategories[0]);
@@ -102,6 +104,10 @@ public class Graph extends ActionBarActivity {
         rangeSeekBar4.setId(5);
 
 
+        SeekBar andoridSeekbar = new SeekBar(this);
+
+
+
 
         //set layout details
         layout.setBackgroundColor(Color.parseColor("#ff0000"));
@@ -113,7 +119,7 @@ public class Graph extends ActionBarActivity {
                         LinearLayout.LayoutParams.WRAP_CONTENT , 1  );
 
 
-        seekBarParams.setMargins(24,48,24,48);
+        seekBarParams.setMargins(24, 48, 24, 48);
 
         rangeSeekBar0.setLayoutParams(seekBarParams);
         rangeSeekBar1.setLayoutParams(seekBarParams);
@@ -121,16 +127,26 @@ public class Graph extends ActionBarActivity {
         rangeSeekBar3.setLayoutParams(seekBarParams);
         rangeSeekBar4.setLayoutParams(seekBarParams);
 
+        layout.addView(linesView);
 
-        //layout.addView(linesView);
         layout.addView(rangeSeekBar0);
         layout.addView(rangeSeekBar1);
         layout.addView(rangeSeekBar2);
         layout.addView(rangeSeekBar3);
         layout.addView(rangeSeekBar4);
+        layout.addView(andoridSeekbar);
+
+        andoridSeekbar.bringToFront();
+
+        rangeSeekBar0.bringToFront();
+        rangeSeekBar1.bringToFront();
+        rangeSeekBar2.bringToFront();
+        rangeSeekBar3.bringToFront();
+        rangeSeekBar4.bringToFront();
 
 
-        setContentView(layout);
+
+
 
     }
 
