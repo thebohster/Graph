@@ -39,6 +39,8 @@ public class Graph extends ActionBarActivity {
     int numberOfRows = 0 ;
     int screenWidth;
     int screenHeight;
+    int sideWidth = 24;
+    int topWidth = 48;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +109,9 @@ public class Graph extends ActionBarActivity {
         rangeSeekBar4.setId(5);
 
 
+        //rangeSeekBar0.setOnRangeSeekBarChangeListener();
+
+
         //SeekBar andoridSeekbar = new SeekBar(this);
 
 
@@ -122,29 +127,28 @@ public class Graph extends ActionBarActivity {
         RelativeLayout.LayoutParams seekBarParams0 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         //seekBarParams1.addRule( RelativeLayout.BELOW, rangeSeekBar0.getId() );
         seekBarParams0.addRule(RelativeLayout.ALIGN_PARENT_TOP );
-        seekBarParams0.setMargins(24,48,24,48);
+        seekBarParams0.setMargins(sideWidth,topWidth, sideWidth,topWidth);
 
         //seekBarParams0.addRule(RelativeLayout);
 
-
         RelativeLayout.LayoutParams seekBarParams1 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         seekBarParams1.addRule( RelativeLayout.BELOW, rangeSeekBar0.getId() );
-        seekBarParams1.setMargins(24,48,24,48);
+        seekBarParams1.setMargins(sideWidth,topWidth, sideWidth,topWidth);
 
 
         RelativeLayout.LayoutParams seekBarParams2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         seekBarParams2.addRule( RelativeLayout.BELOW, rangeSeekBar1.getId() );
-        seekBarParams2.setMargins(24,48,24,48);
+        seekBarParams2.setMargins(sideWidth,topWidth, sideWidth,topWidth);
 
 
         RelativeLayout.LayoutParams seekBarParams3 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         seekBarParams3.addRule( RelativeLayout.BELOW, rangeSeekBar2.getId() );
-        seekBarParams3.setMargins(24,48,24,48);
+        seekBarParams3.setMargins(sideWidth,topWidth, sideWidth,topWidth);
 
 
         RelativeLayout.LayoutParams seekBarParams4 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         seekBarParams4.addRule( RelativeLayout.BELOW, rangeSeekBar3.getId() );
-        seekBarParams4.setMargins(24,48,24,48);
+        seekBarParams4.setMargins(sideWidth,topWidth, sideWidth,topWidth);
 
 
 

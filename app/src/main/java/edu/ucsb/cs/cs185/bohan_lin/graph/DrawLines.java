@@ -26,6 +26,9 @@ public class DrawLines extends View {
     private int numberOfRows;
     private int screenWidth;
     private int screenHeight;
+    int sideWidth  = 48 + 48;
+    int topWidth = 48 + 48 + 48;
+
 
     Paint paint = new Paint();
 
@@ -64,18 +67,23 @@ public class DrawLines extends View {
 
        for ( int  i = 0 ; i < numberOfRows ; i ++ )
        {
+
+        // check if line is within limits to pick the color of the line
+        boolean itsIn = true;
+        if ( itsIn)
+            paint.setColor(Color.WHITE);
+        else
+            paint.setColor(Color.GRAY);
+
+        // draw lines here in for loop
            for ( int j = 0 ; j < numberOfColumns- 3 ; j++ )
            {
-               Point startPoint = new Point();
-               Point endPoint = new Point();
 
-               float sx =csvDataRows.get(i).dataFloats[j] * (screenWidth  - 0 ) / (maximumCategories[j] - minimumCategories[j]);
-               float sy =  j * screenHeight/5 ;
+               float sx = sideWidth +  ( (  csvDataRows.get(i).dataFloats[j]  - minimumCategories[j]   ) * (screenWidth  - 0 - 2* sideWidth ) / (maximumCategories[j] - minimumCategories[j])  ) ;
+               float sy = topWidth+  j *  ( screenHeight - topWidth ) /5 ;
 
-               float ex = csvDataRows.get(i).dataFloats[j] * (screenWidth  - 0 ) / (maximumCategories[j+1] - minimumCategories[j+1]);
-               float ey =   ( j+1 ) * screenHeight/5 ;
-
-               paint.setColor(Color.WHITE);
+               float ex =sideWidth + (  ( csvDataRows.get(i).dataFloats[j+1]-minimumCategories[j+1] ) * (screenWidth  - 0 - 2* sideWidth) / (maximumCategories[j+1] - minimumCategories[j+1])   ) ;
+               float ey = topWidth +  ( j+1 ) * ( screenHeight - topWidth )/5 ;
 
                canvas.drawLine(sx,sy,ex,ey ,paint);
 
