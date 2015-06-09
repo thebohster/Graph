@@ -77,6 +77,10 @@ public class RangeSeekBar<T extends Number> extends ImageView {
     private Thumb pressedThumb = null;
     private boolean notifyWhileDragging = false;
     private OnRangeSeekBarChangeListener<T> listener;
+
+    String minLabel = "";
+    String maxLabel;
+
     /**
      * Default color of a {@link RangeSeekBar}, #FF33B5E5. This is also known as "Ice Cream Sandwich" blue.
      */
@@ -454,6 +458,10 @@ public class RangeSeekBar<T extends Number> extends ImageView {
         setMeasuredDimension(width, height);
     }
 
+    public void setMaxLabel(String label) {
+        maxLabel = label;
+    }
+
     /**
      * Draws the widget on the given canvas.
      */
@@ -467,15 +475,17 @@ public class RangeSeekBar<T extends Number> extends ImageView {
         paint.setAntiAlias(true);
 
         // draw min and max labels
-        String minLabel = getContext().getString(R.string.demo_min_label);
-        String maxLabel = getContext().getString(R.string.demo_max_label);
+        //String minLabel = getContext().getString(R.string.demo_min_label);
+        //String maxLabel = getContext().getString(R.string.demo_max_label);
+        //if(maxLabel == null)
+            //maxLabel = "hold";
         float minMaxLabelSize = Math.max(paint.measureText(minLabel), paint.measureText(maxLabel));
         float minMaxHeight = mTextOffset + thumbHalfHeight + mTextSize / 3;
 
         canvas.save();
         canvas.rotate(90);
         //canvas.drawText(minLabel, 0, minMaxHeight, paint);
-        canvas.drawText(minLabel, 67, 0, paint);
+        //canvas.drawText(minLabel, 67, 0, paint);
         canvas.drawText(maxLabel, 67, -602, paint);
         //canvas.drawText(maxLabel, getWidth() - minMaxLabelSize, minMaxHeight, paint);
         canvas.restore();
