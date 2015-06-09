@@ -35,6 +35,10 @@ public class Graph extends ActionBarActivity {
 
     float [] minimumCategories= new float[8];           // should be 7 actually
     float [] maximumCategories = new float[8];
+
+    float [] globalMinimumCategories= new float[8];           // should be 7 actually
+    float [] globalMaximumCategories = new float[8];
+
     int numberOfColumns ;
     int numberOfRows = 0 ;
     int screenWidth;
@@ -70,7 +74,7 @@ public class Graph extends ActionBarActivity {
 
         final DrawLines linesView = new DrawLines(this);
 
-        linesView.setData(csvCategoryNames, csvDataRows, minimumCategories, maximumCategories, numberOfColumns, numberOfRows, screenWidth, screenHeight);
+        linesView.setData(csvCategoryNames, csvDataRows, minimumCategories, maximumCategories, numberOfColumns, numberOfRows, screenWidth, screenHeight, globalMinimumCategories,globalMaximumCategories);
         drawDataLines();
 
         RangeSeekBar<Float> rangeSeekBar0 = new RangeSeekBar<Float>(this);
@@ -309,11 +313,14 @@ public class Graph extends ActionBarActivity {
                 if (  minimumCategories[i] > csvDataRows.get(j).dataFloats[i] )
                 {
                     minimumCategories[i] = csvDataRows.get(j).dataFloats[i];
+                    //globalMinimumCategories[i] = csvDataRows.get(j).dataFloats[i];
+
                 }
 
                 if (  maximumCategories[i] < csvDataRows.get(j).dataFloats[i] )
                 {
                     maximumCategories[i] = csvDataRows.get(j).dataFloats[i];
+                    //globalMaximumCategories[i] = csvDataRows.get(j).dataFloats[i];
                 }
 
             }
@@ -325,12 +332,15 @@ public class Graph extends ActionBarActivity {
         for( int  i = 0 ; i < numberOfColumns ; i++ )
         {
             System.out.print( "  " + minimumCategories[i]);
+            globalMinimumCategories[i] = minimumCategories[i];
+
         }
         System.out.println();
         System.out.println("Maximum categories");
         for( int  i = 0 ; i < numberOfColumns ; i++ )
         {
             System.out.print( "  " + maximumCategories[i]);
+            globalMaximumCategories[i] = maximumCategories[i];
         }
         System.out.println();
         System.out.println("end of setminmax");

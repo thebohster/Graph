@@ -52,11 +52,14 @@ final public class DrawLines extends View {
     }
 
 
-    public void setData(ArrayList<String> categoryNames, ArrayList<inputCSVdata> dataRows, float[] minCategories, float[] maxCategories, int numColumns, int numRows, int width, int height) {
+    public void setData(ArrayList<String> categoryNames, ArrayList<inputCSVdata> dataRows, float[] minCategories, float[] maxCategories, int numColumns, int numRows, int width, int height,float[] gMinCategories, float[] gMaxCategories ) {
         this.csvCategoryNames = categoryNames;
         this.csvDataRows = dataRows;
-        this.minimumCategories = minCategories;
-        this.maximumCategories = maxCategories;
+        this.minimumCategories = gMinCategories;
+        this.maximumCategories = gMaxCategories;
+        //this.minimumCategories = minCategories;
+        //this.maximumCategories = maxCategories;
+
         this.numberOfColumns = numColumns;
         this.numberOfRows = numRows;
         this.screenWidth = width;
@@ -86,11 +89,11 @@ final public class DrawLines extends View {
         boolean itsIn = true;
 
         // check if line is within limits to pick the color of the line, use updated Min categories here
-        if (  csvDataRows.get(i).dataFloats[0] > updatedMinimumCategories[0] && csvDataRows.get(i).dataFloats[0] < updatedMaximumCategories[0]
-                && csvDataRows.get(i).dataFloats[1] > updatedMinimumCategories[1] && csvDataRows.get(i).dataFloats[1] < updatedMaximumCategories[1]
-                     && csvDataRows.get(i).dataFloats[2] > updatedMinimumCategories[2] && csvDataRows.get(i).dataFloats[2] < updatedMaximumCategories[2]
-                          && csvDataRows.get(i).dataFloats[3] > updatedMinimumCategories[3] && csvDataRows.get(i).dataFloats[3] < updatedMaximumCategories[3]
-                                  && csvDataRows.get(i).dataFloats[4] > updatedMinimumCategories[4] && csvDataRows.get(i).dataFloats[4] < updatedMaximumCategories[4] )
+        if (  csvDataRows.get(i).dataFloats[0] >= updatedMinimumCategories[0] && csvDataRows.get(i).dataFloats[0] <= updatedMaximumCategories[0]
+                && csvDataRows.get(i).dataFloats[1] >= updatedMinimumCategories[1] && csvDataRows.get(i).dataFloats[1] <= updatedMaximumCategories[1]
+                     && csvDataRows.get(i).dataFloats[2] >= updatedMinimumCategories[2] && csvDataRows.get(i).dataFloats[2] <= updatedMaximumCategories[2]
+                          && csvDataRows.get(i).dataFloats[3] >= updatedMinimumCategories[3] && csvDataRows.get(i).dataFloats[3] <= updatedMaximumCategories[3]
+                                  && csvDataRows.get(i).dataFloats[4] >= updatedMinimumCategories[4] && csvDataRows.get(i).dataFloats[4] <= updatedMaximumCategories[4] )
             itsIn = true;
         else
             itsIn = false;
