@@ -43,6 +43,9 @@ public class Graph extends ActionBarActivity {
         parseCSV();
         setMinMax();
 
+        DrawLines linesView = new DrawLines(this);
+
+        linesView.setData(csvCategoryNames, csvDataRows, minimumCategories, maximumCategories, numberOfColumns, numberOfRows, screenWidth, screenHeight);
         drawDataLines();
 
         super.onCreate(savedInstanceState);
@@ -64,8 +67,6 @@ public class Graph extends ActionBarActivity {
 
         // Add to layout
         LinearLayout layout = new LinearLayout(this);
-
-        DrawLines linesView = new DrawLines(this);
 
         RangeSeekBar<Float> rangeSeekBar0 = new RangeSeekBar<Float>(this);
         rangeSeekBar0.setRangeValues(minimumCategories[0], maximumCategories[0]);
@@ -121,7 +122,7 @@ public class Graph extends ActionBarActivity {
         rangeSeekBar4.setLayoutParams(seekBarParams);
 
 
-        layout.addView(linesView);
+        //layout.addView(linesView);
         layout.addView(rangeSeekBar0);
         layout.addView(rangeSeekBar1);
         layout.addView(rangeSeekBar2);
@@ -130,17 +131,6 @@ public class Graph extends ActionBarActivity {
 
 
         setContentView(layout);
-
-
-
-
-
-
-
-
-
-
-
 
     }
 
@@ -164,8 +154,6 @@ public class Graph extends ActionBarActivity {
             while ((nextLine = reader.readNext()) != null) {
 
                 inputCSVdata tempRowdata = new inputCSVdata();
-
-
 
                 try
                 {
@@ -247,16 +235,12 @@ public class Graph extends ActionBarActivity {
         System.out.println();
         System.out.println("end of setminmax");
 
-
-
     }
 
     public void drawDataLines()
     {
 
         System.out.println("Drawline data lines");
-
-
 
         // one loop to figure out the points
         //draw the lines
@@ -286,17 +270,9 @@ public class Graph extends ActionBarActivity {
 
             }
 
-
             // some call to draw the lines
 
-
-
-
         }
-
-
-
-
 
     }
 
