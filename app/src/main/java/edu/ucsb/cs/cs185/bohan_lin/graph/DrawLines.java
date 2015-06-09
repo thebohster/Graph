@@ -30,8 +30,8 @@ final public class DrawLines extends View {
     private int numberOfRows;
     private int screenWidth;
     private int screenHeight;
-    int sideWidth  = 48 + 48;
-    int topWidth = 48 + 48 + 48;
+    int sWidth  = 48 + 48;
+    int tWidth = 48 + 48 + 48;
 
 
     Paint paint = new Paint();
@@ -72,8 +72,6 @@ final public class DrawLines extends View {
         updatedMinimumCategories[i] = x;
         updatedMaximumCategories[i] = y;
 
-
-
     }
 
     @Override
@@ -88,7 +86,11 @@ final public class DrawLines extends View {
         boolean itsIn = true;
 
         // check if line is within limits to pick the color of the line, use updated Min categories here
-        if (  csvDataRows.get(i).dataFloats[0] > updatedMinimumCategories[0] && csvDataRows.get(i).dataFloats[0] < updatedMaximumCategories[0]  )
+        if (  csvDataRows.get(i).dataFloats[0] > updatedMinimumCategories[0] && csvDataRows.get(i).dataFloats[0] < updatedMaximumCategories[0]
+                && csvDataRows.get(i).dataFloats[1] > updatedMinimumCategories[1] && csvDataRows.get(i).dataFloats[1] < updatedMaximumCategories[1]
+                     && csvDataRows.get(i).dataFloats[2] > updatedMinimumCategories[2] && csvDataRows.get(i).dataFloats[2] < updatedMaximumCategories[2]
+                          && csvDataRows.get(i).dataFloats[3] > updatedMinimumCategories[3] && csvDataRows.get(i).dataFloats[3] < updatedMaximumCategories[3]
+                                  && csvDataRows.get(i).dataFloats[4] > updatedMinimumCategories[4] && csvDataRows.get(i).dataFloats[4] < updatedMaximumCategories[4] )
             itsIn = true;
         else
             itsIn = false;
@@ -103,11 +105,11 @@ final public class DrawLines extends View {
            for ( int j = 0 ; j < numberOfColumns- 3 ; j++ )
            {
 
-               float sx = sideWidth +  ( (  csvDataRows.get(i).dataFloats[j]  - minimumCategories[j]   ) * (screenWidth  - 0 - 2* sideWidth ) / (maximumCategories[j] - minimumCategories[j])  ) ;
-               float sy = topWidth+  j *  ( screenHeight - topWidth ) /5 ;
+               float sx = sWidth +  ( (  csvDataRows.get(i).dataFloats[j]  - minimumCategories[j]   ) * (screenWidth - 2* sWidth ) / (maximumCategories[j] - minimumCategories[j])  ) ;
+               float sy = tWidth+  j *  ( screenHeight - tWidth ) /5 ;
 
-               float ex =sideWidth + (  ( csvDataRows.get(i).dataFloats[j+1]-minimumCategories[j+1] ) * (screenWidth  - 0 - 2* sideWidth) / (maximumCategories[j+1] - minimumCategories[j+1])   ) ;
-               float ey = topWidth +  ( j+1 ) * ( screenHeight - topWidth )/5 ;
+               float ex =sWidth + (  ( csvDataRows.get(i).dataFloats[j+1]-minimumCategories[j+1] ) * (screenWidth  - 2* sWidth) / (maximumCategories[j+1] - minimumCategories[j+1])   ) ;
+               float ey = tWidth +  ( j+1 ) * ( screenHeight - tWidth )/5 ;
 
                canvas.drawLine(sx,sy,ex,ey ,paint);
 

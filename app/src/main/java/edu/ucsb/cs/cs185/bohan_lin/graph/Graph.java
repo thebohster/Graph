@@ -170,6 +170,66 @@ public class Graph extends ActionBarActivity {
                 }
             });
 
+        rangeSeekBar1.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Float>() {
+            @Override
+            public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Float minValue, Float maxValue) {
+
+                int i = 1 ;
+                float x =    minValue;
+
+                float  y =    maxValue;
+
+                linesView.updateSelectedRange(i,x,y);
+                linesView.invalidate();
+
+            }
+        });
+
+        rangeSeekBar2.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Float>() {
+            @Override
+            public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Float minValue, Float maxValue) {
+
+                int i = 2 ;
+                float x =    minValue;
+
+                float  y =    maxValue;
+
+                linesView.updateSelectedRange(i,x,y);
+                linesView.invalidate();
+
+            }
+        });
+
+        rangeSeekBar3.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Float>() {
+            @Override
+            public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Float minValue, Float maxValue) {
+
+                int i = 3 ;
+                float x =    minValue;
+
+                float  y =    maxValue;
+
+                linesView.updateSelectedRange(i,x,y);
+                linesView.invalidate();
+
+            }
+        });
+
+        rangeSeekBar4.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Float>() {
+            @Override
+            public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Float minValue, Float maxValue) {
+
+                int i = 4 ;
+                float x =    minValue;
+
+                float  y =    maxValue;
+
+                linesView.updateSelectedRange(i,x,y);
+                linesView.invalidate();
+
+            }
+        });
+
 
 
     }
