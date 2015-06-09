@@ -101,11 +101,11 @@ final public class DrawLines extends View {
 
            if (itsIn) {
                paint.setColor(Color.WHITE);
-               paint.setAlpha(200);
+               paint.setAlpha(180);
            }
         else {
             paint.setColor(Color.GRAY);
-            paint.setAlpha(90);
+            paint.setAlpha(50);
 
         }
 
