@@ -4,13 +4,10 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
+import android.util.AttributeSet;
 import android.view.View;
 
-import android.util.AttributeSet;
-
 import java.util.ArrayList;
-import java.util.jar.Attributes;
 
 /**
  * Created by Bohan on 6/7/2015.

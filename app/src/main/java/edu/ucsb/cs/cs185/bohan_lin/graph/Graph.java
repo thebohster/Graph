@@ -81,24 +81,28 @@ public class Graph extends ActionBarActivity {
         rangeSeekBar0.setRangeValues(minimumCategories[0], maximumCategories[0]);
         rangeSeekBar0.setSelectedMinValue(minimumCategories[0]);
         rangeSeekBar0.setSelectedMaxValue(maximumCategories[0]);
+        rangeSeekBar0.setMaxLabel(csvCategoryNames.get(1));
         rangeSeekBar0.setId(1);
 
         RangeSeekBar<Float> rangeSeekBar1 = new RangeSeekBar<Float>(this);
         rangeSeekBar1.setRangeValues(minimumCategories[1], maximumCategories[1]);
         rangeSeekBar1.setSelectedMinValue(minimumCategories[1]);
         rangeSeekBar1.setSelectedMaxValue(maximumCategories[1]);
+        rangeSeekBar1.setMaxLabel(csvCategoryNames.get(2));
         rangeSeekBar1.setId(2);
 
         RangeSeekBar<Float> rangeSeekBar2 = new RangeSeekBar<Float>(this);
         rangeSeekBar2.setRangeValues(minimumCategories[2], maximumCategories[2]);
         rangeSeekBar2.setSelectedMinValue(minimumCategories[2]);
         rangeSeekBar2.setSelectedMaxValue(maximumCategories[2]);
+        rangeSeekBar2.setMaxLabel(csvCategoryNames.get(3));
         rangeSeekBar2.setId(3);
 
         RangeSeekBar<Float> rangeSeekBar3 = new RangeSeekBar<Float>(this);
         rangeSeekBar3.setRangeValues(minimumCategories[3], maximumCategories[3]);
         rangeSeekBar3.setSelectedMinValue(minimumCategories[3]);
         rangeSeekBar3.setSelectedMaxValue(maximumCategories[3]);
+        rangeSeekBar3.setMaxLabel(csvCategoryNames.get(4));
         rangeSeekBar3.setId(4);
 
 
@@ -106,8 +110,10 @@ public class Graph extends ActionBarActivity {
         rangeSeekBar4.setRangeValues(minimumCategories[4], maximumCategories[4]);
         rangeSeekBar4.setSelectedMinValue(minimumCategories[4]);
         rangeSeekBar4.setSelectedMaxValue(maximumCategories[4]);
+        rangeSeekBar4.setMaxLabel(csvCategoryNames.get(5));
         rangeSeekBar4.setId(5);
 
+        //System.out.println(csvCategoryNames.get(1));
 
         //rangeSeekBar0.setOnRangeSeekBarChangeListener();
 
@@ -144,6 +150,8 @@ public class Graph extends ActionBarActivity {
         rangeSeekBar2.setLayoutParams(seekBarParams2);
         rangeSeekBar3.setLayoutParams(seekBarParams3);
         rangeSeekBar4.setLayoutParams(seekBarParams4);
+
+
 
         layout.addView(linesView);
         layout.addView(rangeSeekBar0);
@@ -251,7 +259,7 @@ public class Graph extends ActionBarActivity {
             for (int i = 0; i < firstLine.length; i++) {
                 csvCategoryNames.add(firstLine[i]); /// adding the row names to the category names
             }
-            System.out.println("Header names: " + firstLine[0] + "   " + firstLine[1] + "  " + firstLine[2] + "   " + firstLine[3] + " " + firstLine[4]);
+            //System.out.println("Header names: " + firstLine[0] + "   " + firstLine[1] + "  " + firstLine[2] + "   " + firstLine[3] + " " + firstLine[4]);
 
             //**
             String[] nextLine;
@@ -264,7 +272,7 @@ public class Graph extends ActionBarActivity {
                     tempRowdata.name = nextLine[0];
                     for (int i = 0; i < nextLine.length - 1; i++) {
                         tempRowdata.dataFloats[i] = Float.parseFloat(nextLine[i + 1]);
-                        System.out.println(tempRowdata.dataFloats[i]);
+                        //System.out.println(tempRowdata.dataFloats[i]);
                     }
 
                     csvDataRows.add(tempRowdata);
@@ -273,7 +281,7 @@ public class Graph extends ActionBarActivity {
                 }
                 catch (NumberFormatException ex)
                 {
-                    System.out.println("found a 0 lol ");
+                    //System.out.println("found a 0 lol ");
                     tempRowdata.name = "0";
                     for (int i = 0; i < nextLine.length - 1; i++)
                         tempRowdata.dataFloats[i] = 0.0f;
@@ -285,7 +293,7 @@ public class Graph extends ActionBarActivity {
                 // stop adding the 0s to the list as thiswill screw up the min and max
             }
 
-            System.out.println("size of arraylist is: " + csvDataRows.size());
+            //System.out.println("size of arraylist is: " + csvDataRows.size());
             numberOfRows = csvDataRows.size();
 
         } catch (IOException e) {
@@ -328,29 +336,29 @@ public class Graph extends ActionBarActivity {
 
         //printing out minimum and maximum
 
-        System.out.println("Minimum categories");
+        //System.out.println("Minimum categories");
         for( int  i = 0 ; i < numberOfColumns ; i++ )
         {
-            System.out.print( "  " + minimumCategories[i]);
+            //System.out.print( "  " + minimumCategories[i]);
             globalMinimumCategories[i] = minimumCategories[i];
 
         }
-        System.out.println();
-        System.out.println("Maximum categories");
+        //System.out.println();
+        //System.out.println("Maximum categories");
         for( int  i = 0 ; i < numberOfColumns ; i++ )
         {
-            System.out.print( "  " + maximumCategories[i]);
+            //System.out.print( "  " + maximumCategories[i]);
             globalMaximumCategories[i] = maximumCategories[i];
         }
-        System.out.println();
-        System.out.println("end of setminmax");
+        //System.out.println();
+        //System.out.println("end of setminmax");
 
     }
 
     public void drawDataLines()
     {
 
-        System.out.println("Drawline data lines");
+        //System.out.println("Drawline data lines");
 
         // one loop to figure out the points
         //draw the lines
