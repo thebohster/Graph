@@ -59,7 +59,7 @@ public class DrawLines extends View {
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawLine(10, 10, 500, 500, paint);
+        //canvas.drawLine(10, 10, 500, 500, paint);
 
 
        for ( int  i = 0 ; i < numberOfRows ; i ++ )
@@ -69,13 +69,14 @@ public class DrawLines extends View {
                Point startPoint = new Point();
                Point endPoint = new Point();
 
-               float sx =24 + csvDataRows.get(i).dataFloats[j] * (screenWidth  - 0 ) / (maximumCategories[j] - minimumCategories[j]);
-               float sy = 48+  j * screenHeight/5 ;
+               float sx =csvDataRows.get(i).dataFloats[j] * (screenWidth  - 0 ) / (maximumCategories[j] - minimumCategories[j]);
+               float sy =  j * screenHeight/5 ;
 
-               float ex =24 +  csvDataRows.get(i).dataFloats[j] * (screenWidth  - 0 ) / (maximumCategories[j+1] - minimumCategories[j+1]);
-               float ey = 48 +  ( j+1 ) * screenHeight/5 ;
+               float ex = csvDataRows.get(i).dataFloats[j] * (screenWidth  - 0 ) / (maximumCategories[j+1] - minimumCategories[j+1]);
+               float ey =   ( j+1 ) * screenHeight/5 ;
 
                paint.setColor(Color.WHITE);
+
                canvas.drawLine(sx,sy,ex,ey ,paint);
 
 

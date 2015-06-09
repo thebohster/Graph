@@ -14,6 +14,7 @@ import android.util.Range;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -62,7 +63,7 @@ public class Graph extends ActionBarActivity {
 
 
         // Add to layout
-        LinearLayout layout = new LinearLayout(this);
+        RelativeLayout layout = new RelativeLayout(this);
         setContentView(layout);
 
         DrawLines linesView = new DrawLines(this);
@@ -77,11 +78,13 @@ public class Graph extends ActionBarActivity {
         rangeSeekBar0.setId(1);
 
 
+
         RangeSeekBar<Float> rangeSeekBar1 = new RangeSeekBar<Float>(this);
         rangeSeekBar1.setRangeValues(minimumCategories[1], maximumCategories[1]);
         rangeSeekBar1.setSelectedMinValue(minimumCategories[1]);
         rangeSeekBar1.setSelectedMaxValue(maximumCategories[1]);
         rangeSeekBar1.setId(2);
+
 
 
         RangeSeekBar<Float> rangeSeekBar2 = new RangeSeekBar<Float>(this);
@@ -104,39 +107,60 @@ public class Graph extends ActionBarActivity {
         rangeSeekBar4.setId(5);
 
 
-        SeekBar andoridSeekbar = new SeekBar(this);
+        //SeekBar andoridSeekbar = new SeekBar(this);
 
 
 
 
         //set layout details
         layout.setBackgroundColor(Color.parseColor("#ff0000"));
-        layout.setOrientation(LinearLayout.VERTICAL);
-
-        LinearLayout.LayoutParams seekBarParams =
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT , 1  );
+       // layout.setOrientation(LinearLayout.VERTICAL);
 
 
-        seekBarParams.setMargins(24, 48, 24, 48);
+        //ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(this)
 
-        rangeSeekBar0.setLayoutParams(seekBarParams);
-        rangeSeekBar1.setLayoutParams(seekBarParams);
-        rangeSeekBar2.setLayoutParams(seekBarParams);
-        rangeSeekBar3.setLayoutParams(seekBarParams);
-        rangeSeekBar4.setLayoutParams(seekBarParams);
+        RelativeLayout.LayoutParams seekBarParams0 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        //seekBarParams1.addRule( RelativeLayout.BELOW, rangeSeekBar0.getId() );
+        seekBarParams0.addRule(RelativeLayout.ALIGN_PARENT_TOP );
+        seekBarParams0.setMargins(24,48,24,48);
+
+        //seekBarParams0.addRule(RelativeLayout);
+
+
+        RelativeLayout.LayoutParams seekBarParams1 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        seekBarParams1.addRule( RelativeLayout.BELOW, rangeSeekBar0.getId() );
+        seekBarParams1.setMargins(24,48,24,48);
+
+
+        RelativeLayout.LayoutParams seekBarParams2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        seekBarParams2.addRule( RelativeLayout.BELOW, rangeSeekBar1.getId() );
+        seekBarParams2.setMargins(24,48,24,48);
+
+
+        RelativeLayout.LayoutParams seekBarParams3 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        seekBarParams3.addRule( RelativeLayout.BELOW, rangeSeekBar2.getId() );
+        seekBarParams3.setMargins(24,48,24,48);
+
+
+        RelativeLayout.LayoutParams seekBarParams4 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        seekBarParams4.addRule( RelativeLayout.BELOW, rangeSeekBar3.getId() );
+        seekBarParams4.setMargins(24,48,24,48);
+
+
+
+        //seekBarParams.setMargins(24, 48, 24, 48);
+        rangeSeekBar0.setLayoutParams(seekBarParams0);
+        rangeSeekBar1.setLayoutParams(seekBarParams1);
+        rangeSeekBar2.setLayoutParams(seekBarParams2);
+        rangeSeekBar3.setLayoutParams(seekBarParams3);
+        rangeSeekBar4.setLayoutParams(seekBarParams4);
 
         layout.addView(linesView);
-
         layout.addView(rangeSeekBar0);
         layout.addView(rangeSeekBar1);
         layout.addView(rangeSeekBar2);
         layout.addView(rangeSeekBar3);
         layout.addView(rangeSeekBar4);
-        layout.addView(andoridSeekbar);
-
-        andoridSeekbar.bringToFront();
 
         rangeSeekBar0.bringToFront();
         rangeSeekBar1.bringToFront();
