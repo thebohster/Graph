@@ -104,7 +104,6 @@ public class Graph extends ActionBarActivity {
         layout.setBackgroundColor(Color.parseColor("#ff0000"));
         layout.setOrientation(LinearLayout.VERTICAL);
 
-
         LinearLayout.LayoutParams seekBarParams =
                 new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,

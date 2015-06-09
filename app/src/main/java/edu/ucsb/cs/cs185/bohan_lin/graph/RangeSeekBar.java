@@ -80,7 +80,9 @@ public class RangeSeekBar<T extends Number> extends ImageView {
     /**
      * Default color of a {@link RangeSeekBar}, #FF33B5E5. This is also known as "Ice Cream Sandwich" blue.
      */
-    public static final int DEFAULT_COLOR = Color.argb(0xFF, 0x33, 0xB5, 0xE5);
+    public static final int DEFAULT_COLOR = Color.argb(0xFF, 0xFF, 0xFF, 0xFF);
+    //public static final int DEFAULT_COLOR = Color.argb(0xFF, 0x33, 0xB5, 0xE5);
+
     /**
      * An invalid pointer id.
      */
@@ -88,7 +90,7 @@ public class RangeSeekBar<T extends Number> extends ImageView {
 
     // Localized constants from MotionEvent for compatibility
     // with API < 8 "Froyo".
-    public static final int ACTION_POINTER_UP = 0x6, ACTION_POINTER_INDEX_MASK = 0x0000ff00, ACTION_POINTER_INDEX_SHIFT = 8;
+    public static final int ACTION_POINTER_UP = 0x6, ACTION_POINTER_INDEX_MASK = 0xffffff00, ACTION_POINTER_INDEX_SHIFT = 8;
 
     private float mDownMotionX;
 
@@ -496,7 +498,9 @@ public class RangeSeekBar<T extends Number> extends ImageView {
         mRect.left = normalizedToScreen(normalizedMinValue);
         mRect.right = normalizedToScreen(normalizedMaxValue);
 
-        paint.setColor(colorToUseForButtonsAndHighlightedLine);
+        paint.setColor(Color.WHITE);
+
+        //paint.setColor(colorToUseForButtonsAndHighlightedLine);
         canvas.drawRect(mRect, paint);
 
         // draw minimum thumb if not a single thumb control
@@ -579,7 +583,10 @@ public class RangeSeekBar<T extends Number> extends ImageView {
             buttonToDraw = pressed ? thumbPressedImage : thumbImage;
         }
 
-        canvas.drawBitmap(buttonToDraw, screenCoord - thumbHalfWidth,
+        Bitmap newButtonToDraw = buttonToDraw.copy(Bitmap.Config.ARGB_8888, true);
+        //newButtonToDraw.eraseColor(DEFAULT_COLOR);
+
+        canvas.drawBitmap(newButtonToDraw, screenCoord - thumbHalfWidth,
                           mTextOffset,
                           paint);
     }
