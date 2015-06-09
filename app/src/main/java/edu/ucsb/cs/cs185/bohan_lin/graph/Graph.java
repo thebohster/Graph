@@ -72,22 +72,17 @@ public class Graph extends ActionBarActivity {
         linesView.setData(csvCategoryNames, csvDataRows, minimumCategories, maximumCategories, numberOfColumns, numberOfRows, screenWidth, screenHeight);
         drawDataLines();
 
-
         RangeSeekBar<Float> rangeSeekBar0 = new RangeSeekBar<Float>(this);
         rangeSeekBar0.setRangeValues(minimumCategories[0], maximumCategories[0]);
         rangeSeekBar0.setSelectedMinValue(minimumCategories[0]);
         rangeSeekBar0.setSelectedMaxValue(maximumCategories[0]);
         rangeSeekBar0.setId(1);
 
-
-
         RangeSeekBar<Float> rangeSeekBar1 = new RangeSeekBar<Float>(this);
         rangeSeekBar1.setRangeValues(minimumCategories[1], maximumCategories[1]);
         rangeSeekBar1.setSelectedMinValue(minimumCategories[1]);
         rangeSeekBar1.setSelectedMaxValue(maximumCategories[1]);
         rangeSeekBar1.setId(2);
-
-
 
         RangeSeekBar<Float> rangeSeekBar2 = new RangeSeekBar<Float>(this);
         rangeSeekBar2.setRangeValues(minimumCategories[2], maximumCategories[2]);
@@ -111,25 +106,14 @@ public class Graph extends ActionBarActivity {
 
         //rangeSeekBar0.setOnRangeSeekBarChangeListener();
 
-
-        //SeekBar andoridSeekbar = new SeekBar(this);
-
-
-
-
         //set layout details
         layout.setBackgroundColor(Color.parseColor("#ff0000"));
-       // layout.setOrientation(LinearLayout.VERTICAL);
 
-
-        //ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(this)
 
         RelativeLayout.LayoutParams seekBarParams0 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        //seekBarParams1.addRule( RelativeLayout.BELOW, rangeSeekBar0.getId() );
+
         seekBarParams0.addRule(RelativeLayout.ALIGN_PARENT_TOP );
         seekBarParams0.setMargins(sideWidth,topWidth, sideWidth,topWidth);
-
-        //seekBarParams0.addRule(RelativeLayout);
 
         RelativeLayout.LayoutParams seekBarParams1 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         seekBarParams1.addRule( RelativeLayout.BELOW, rangeSeekBar0.getId() );
@@ -150,9 +134,6 @@ public class Graph extends ActionBarActivity {
         seekBarParams4.addRule( RelativeLayout.BELOW, rangeSeekBar3.getId() );
         seekBarParams4.setMargins(sideWidth,topWidth, sideWidth,topWidth);
 
-
-
-        //seekBarParams.setMargins(24, 48, 24, 48);
         rangeSeekBar0.setLayoutParams(seekBarParams0);
         rangeSeekBar1.setLayoutParams(seekBarParams1);
         rangeSeekBar2.setLayoutParams(seekBarParams2);
@@ -171,9 +152,6 @@ public class Graph extends ActionBarActivity {
         rangeSeekBar2.bringToFront();
         rangeSeekBar3.bringToFront();
         rangeSeekBar4.bringToFront();
-
-
-
 
 
     }

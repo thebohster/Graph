@@ -22,6 +22,10 @@ public class DrawLines extends View {
 
     private float [] minimumCategories;           // should be 7 actually
     private float [] maximumCategories;
+
+    private float [] updatedMinimumCategories;           // should be 7 actually
+    private float [] updatedMaximumCategories;
+
     private int numberOfColumns;
     private int numberOfRows;
     private int screenWidth;
@@ -57,6 +61,10 @@ public class DrawLines extends View {
         this.numberOfRows = numRows;
         this.screenWidth = width;
         this.screenHeight = height;
+
+        this.updatedMinimumCategories = minCategories;
+        this.updatedMaximumCategories = maxCategories;
+
     }
 
     @Override
@@ -68,7 +76,9 @@ public class DrawLines extends View {
        for ( int  i = 0 ; i < numberOfRows ; i ++ )
        {
 
-        // check if line is within limits to pick the color of the line
+        // check if line is within limits to pick the color of the line, use updated Min categories here
+
+
         boolean itsIn = true;
         if ( itsIn)
             paint.setColor(Color.WHITE);
