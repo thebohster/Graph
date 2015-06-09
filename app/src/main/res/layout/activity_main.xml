@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="50dp" />
+        android:textSize="56dp" />
 
     <View
         android:layout_width="match_parent"
@@ -66,7 +66,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cars II"
+        android:text="Data Set 2"
         android:id="@+id/data2"
         android:layout_gravity="bottom"
         android:onClick="graphActivity"
@@ -89,6 +89,35 @@
         android:id="@+id/line3"
         android:layout_below="@+id/data2"
         android:background="@android:color/white" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data Set 3"
+        android:id="@+id/button"
+        android:layout_gravity="bottom"
+        android:onClick="graphActivity"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textStyle="normal"
+        android:textSize="18dp"
+        android:background="#ff0000"
+        android:shadowColor="#ff0000"
+        android:gravity="left|center_vertical"
+        android:layout_below="@+id/line3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/line4"
+        android:layout_below="@+id/data3"
+        android:background="@android:color/white" />
+
+
 
 
 </RelativeLayout>

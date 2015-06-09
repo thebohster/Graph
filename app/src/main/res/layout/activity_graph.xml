@@ -10,62 +10,7 @@
     tools:context="edu.ucsb.cs.cs185.bohan_lin.graph.Graph">
 
 
-   <!--
-    <edu.ucsb.cs.cs185.bohan_lin.graph.RangeSeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/value1"
-        rsb:absoluteMinValue="0"
-        rsb:absoluteMaxValue="100"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
-    <edu.ucsb.cs.cs185.bohan_lin.graph.RangeSeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/value2"
-        rsb:absoluteMinValue="0"
-        rsb:absoluteMaxValue="100"
-        android:layout_marginBottom="58dp"
-        android:layout_above="@+id/value3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <edu.ucsb.cs.cs185.bohan_lin.graph.RangeSeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/value3"
-        rsb:absoluteMinValue="0"
-        rsb:absoluteMaxValue="100"
-        android:layout_marginBottom="58dp"
-        android:layout_above="@+id/value4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <edu.ucsb.cs.cs185.bohan_lin.graph.RangeSeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/value4"
-        rsb:absoluteMinValue="0"
-        rsb:absoluteMaxValue="100"
-        android:layout_marginBottom="58dp"
-        android:layout_above="@+id/value5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <edu.ucsb.cs.cs185.bohan_lin.graph.RangeSeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/value5"
-        rsb:absoluteMinValue="0"
-        rsb:absoluteMaxValue="100"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-
-   -->
 
 
 

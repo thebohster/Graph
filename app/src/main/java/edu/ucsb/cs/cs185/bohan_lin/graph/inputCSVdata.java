@@ -5,20 +5,6 @@ package edu.ucsb.cs.cs185.bohan_lin.graph;
  */
 public class inputCSVdata {
     String name;
-
-    //ArrayList<Float> floatData;
-
-    /*
-                            Float economy;
-                            Float cylinders;
-                            Float displacement;
-                            Float power;
-                            Float weight;
-                            Float accelerate;
-                            Float year;
-*/
-
-
     Float []dataFloats ;
 
     public inputCSVdata()

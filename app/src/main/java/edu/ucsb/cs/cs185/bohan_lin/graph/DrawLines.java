@@ -30,6 +30,8 @@ final public class DrawLines extends View {
     int sWidth  = 48 + 48 + 28;
     int tWidth = 48 + 48 + 44;
     int bWidth = 48+ 42;
+    int totalNumberOfLines;
+    int numberOfLinesDisplayed;
 
 
     Paint paint = new Paint();
@@ -57,6 +59,7 @@ final public class DrawLines extends View {
         this.maximumCategories = gMaxCategories;
         //this.minimumCategories = minCategories;
         //this.maximumCategories = maxCategories;
+        this.totalNumberOfLines = numRows;
 
         this.numberOfColumns = numColumns;
         this.numberOfRows = numRows;
@@ -79,7 +82,7 @@ final public class DrawLines extends View {
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //canvas.drawLine(10, 10, 500, 500, paint);
-
+        numberOfLinesDisplayed = 0;
 
        for ( int  i = 0 ; i < numberOfRows ; i ++ ) {
 
@@ -99,6 +102,8 @@ final public class DrawLines extends View {
            if (itsIn) {
                paint.setColor(Color.WHITE);
                paint.setAlpha(180);
+               numberOfLinesDisplayed ++;
+
            }
         else {
             paint.setColor(Color.GRAY);

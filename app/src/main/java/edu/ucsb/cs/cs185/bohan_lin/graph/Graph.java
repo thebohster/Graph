@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.opencsv.CSVReader;
 
@@ -45,6 +46,8 @@ public class Graph extends ActionBarActivity {
     int screenHeight;
     int sideWidth = 24;
     int topWidth = 48;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,9 +116,10 @@ public class Graph extends ActionBarActivity {
         rangeSeekBar4.setMaxLabel(csvCategoryNames.get(5));
         rangeSeekBar4.setId(5);
 
-        //System.out.println(csvCategoryNames.get(1));
 
-        //rangeSeekBar0.setOnRangeSeekBarChangeListener();
+        //TextView totalNumberOfLines = new ( TextView);
+        //totalNumberOfLines.setText();
+
 
         //set layout details
         layout.setBackgroundColor(Color.parseColor("#ff0000"));
@@ -249,6 +253,7 @@ public class Graph extends ActionBarActivity {
     public void parseCSV() {
 
         try {
+
             InputStreamReader csvStreamReader = new InputStreamReader(getAssets().open("cars.csv"));
             CSVReader reader = new CSVReader(csvStreamReader);
 
@@ -289,7 +294,6 @@ public class Graph extends ActionBarActivity {
 
                 }
 
-                //csvDataRows.add(tempRowdata);
                 // stop adding the 0s to the list as thiswill screw up the min and max
             }
 

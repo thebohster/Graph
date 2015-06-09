@@ -477,10 +477,11 @@ public class RangeSeekBar<T extends Number> extends ImageView {
         // draw min and max labels
         //String minLabel = getContext().getString(R.string.demo_min_label);
         //String maxLabel = getContext().getString(R.string.demo_max_label);
-        //if(maxLabel == null)
-            //maxLabel = "hold";
+        if(maxLabel == null)
+            maxLabel = "hold";
         String tempMinLabel = getContext().getString(R.string.demo_min_label);
         String tempMaxLabel = getContext().getString(R.string.demo_max_label);
+
         float minMaxLabelSize = Math.max(paint.measureText(tempMinLabel), paint.measureText(tempMaxLabel));
         float minMaxHeight = mTextOffset + thumbHalfHeight + mTextSize / 3;
 
@@ -539,8 +540,6 @@ public class RangeSeekBar<T extends Number> extends ImageView {
             String minText = String.valueOf(minInt);
             String maxText = String.valueOf(maxInt);
 
-
-
             float minTextWidth = paint.measureText(minText) + offset;
             float maxTextWidth = paint.measureText(maxText) + offset;
 
@@ -548,14 +547,14 @@ public class RangeSeekBar<T extends Number> extends ImageView {
             canvas.rotate(90);
             if (!mSingleThumb) {
                 canvas.drawText(minText,
-                                mDistanceToTop + mTextSize,
-                                -(normalizedToScreen(normalizedMinValue) - minTextWidth * 0.5f) - 10,
+                                mDistanceToTop + mTextSize -30,
+                                -(normalizedToScreen(normalizedMinValue) - minTextWidth * 0.5f) ,
                                 paint);
             }
 
             canvas.drawText(maxText,
-                            mDistanceToTop + mTextSize,
-                            -(normalizedToScreen(normalizedMaxValue) - maxTextWidth * 0.5f) - 15,
+                            mDistanceToTop + mTextSize - 30 ,
+                            -(normalizedToScreen(normalizedMaxValue) - maxTextWidth * 0.5f) ,
                             paint);
 
             canvas.restore();
