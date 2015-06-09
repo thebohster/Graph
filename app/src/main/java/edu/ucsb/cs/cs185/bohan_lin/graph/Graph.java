@@ -65,6 +65,8 @@ public class Graph extends ActionBarActivity {
         // Add to layout
         LinearLayout layout = new LinearLayout(this);
 
+        DrawLines linesView = new DrawLines(this);
+
         RangeSeekBar<Float> rangeSeekBar0 = new RangeSeekBar<Float>(this);
         rangeSeekBar0.setRangeValues(minimumCategories[0], maximumCategories[0]);
         rangeSeekBar0.setSelectedMinValue(minimumCategories[0]);
@@ -113,18 +115,19 @@ public class Graph extends ActionBarActivity {
         seekBarParams.setMargins(24,48,24,48);
 
         rangeSeekBar0.setLayoutParams(seekBarParams);
-        rangeSeekBar1.setLayoutParams( seekBarParams );
-        rangeSeekBar2.setLayoutParams( seekBarParams );
-        rangeSeekBar3.setLayoutParams( seekBarParams );
-        rangeSeekBar4.setLayoutParams( seekBarParams );
+        rangeSeekBar1.setLayoutParams(seekBarParams);
+        rangeSeekBar2.setLayoutParams(seekBarParams);
+        rangeSeekBar3.setLayoutParams(seekBarParams);
+        rangeSeekBar4.setLayoutParams(seekBarParams);
 
 
+        layout.addView(linesView);
         layout.addView(rangeSeekBar0);
         layout.addView(rangeSeekBar1);
         layout.addView(rangeSeekBar2);
         layout.addView(rangeSeekBar3);
         layout.addView(rangeSeekBar4);
-        //layout.addView(rangeSeekBar4);
+
 
         setContentView(layout);
 
